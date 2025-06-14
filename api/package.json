@@ -1,9 +1,8 @@
 {
-  "name": "Virus-Meha-FGT-V12",
+  "name": "lua-api",
   "version": "1.0.0",
-  "main": "script.js",
-  "dependencies": {},
+  "main": "api/script.js",
   "scripts": {
-    "start": "node script.js"
+    "start": "vercel dev"
   }
 }
